@@ -9,3 +9,5 @@ Primer Curso de Desarrollo de Aplicaciones Multimedia
 - Sistemas Informáticos
 - Lenguaje de marcas
 - Programación
+
+_Nota: El temario está todo en idioma valenciano. _ 
