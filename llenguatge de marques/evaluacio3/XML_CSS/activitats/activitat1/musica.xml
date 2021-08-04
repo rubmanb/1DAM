@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/CSS" href="cataleg.css"?>
+<?xml-stylesheet media="screen" href="cataleg.css"?>
+<CDS>
+	<CD>
+		<titol>
+			Empire Burlesque
+		</titol>
+		<artista>
+			Bob Dylan
+		</artista>
+		<pais>
+			USA
+		</pais>
+		<companyia>
+			Columbia
+		</companyia>
+	</CD>
+	<CD>
+		<titol>
+            Hide your heart
+		</titol>
+		<artista>
+            Bonnie Tyler
+		</artista>
+		<pais>
+            UK
+		</pais>
+		<companyia>
+            CBS Records
+		</companyia>
+	</CD>
+</CDS>

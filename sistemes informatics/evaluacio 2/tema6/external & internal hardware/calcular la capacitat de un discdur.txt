@@ -1,0 +1,16 @@
+ 
+¿Cómo calcular la capacidad de un disco duro?Ej.
+ Calcule la capacidad total (tamaño) de un disco duro con las siguientes características: 
+16cabezales de Lectura/Grabación (o Lectura/Escritura), 1024 cilindros, 128 sectores/pista y512 bytes/sector.
+Solución:
+ El hecho de que el disco duro tenga 16 cabezales de Lectura/Grabación implica quetenemos 8 discos de doble 
+cara (o bien, 16 discos de una cara), lo que significa en cualquier caso que cada cilindro está formado por 
+16 pistas.Si cada cilindro consta de 16 pistas y el disco tiene 1024 cilindros, podremos calcular elnúmero 
+total de pistas del disco multiplicando estos dos valores: 
+Nº total de pistas deldisco = 16 pistas/cilindro * 1024  cilindros = 16384 pistas.
+Sólo necesitamos conocer el tamaño de cada pista para poder calcular el tamaño totaldel disco. 
+Para ello, multiplicamos el número de sectores que tenemos por pista por eltamaño de un sector: 
+Tamaño de una pista = 128 sectores/pista * 512 bytes/sector =65536 bytes = 64 KBYa 
+que hemos calculado el número total del pistas del disco y el tamaño de cada una delas pistas, 
+nos bastará con multiplicar estos dos valores para obtener el tamaño total deldisco: Capacidad total (tamaño) 
+del disco = 16384 pistas * 64 KB/pista = 1048576 KB= 1024 MB = 1 GB

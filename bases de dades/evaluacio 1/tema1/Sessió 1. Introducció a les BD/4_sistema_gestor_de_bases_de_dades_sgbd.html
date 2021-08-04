@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ca" xml:lang="ca" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>4. Sistema Gestor de Bases de Dades (SGBD) | Bases de Dades </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-language" content="ca" />
+<meta name="author" content="Abdó Garcia" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Mostra",hide:"Amaga",showFeedback:"Mostra realimentació",hideFeedback:"Amaga realimentació",correct:"Correcte",incorrect:"Incorrecte",menu:"Menú"}</script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<div id="header" >Bases de Dades</div>
+<div id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">TEMA 1. Introducció a les BD</a></li>
+   <li><a href="0_objectius_etc.html" class="no-ch">0. Objectius, etc</a></li>
+   <li><a href="1_introducci.html" class="no-ch">1. Introducció</a></li>
+   <li><a href="2_fitxers.html" class="no-ch">2. Fitxers</a></li>
+   <li><a href="3_bases_de_dades_bd.html" class="no-ch">3. Bases de Dades (BD)</a></li>
+   <li id="active"><a href="4_sistema_gestor_de_bases_de_dades_sgbd.html" class="active no-ch">4. Sistema Gestor de Bases de Dades (SGBD)</a></li>
+   <li><a href="5_sistemes_dinformaci_si.html" class="no-ch">5. Sistemes d'Informació (SI)</a></li>
+</ul>
+</div>
+<div id='topPagination'>
+<div class="pagination noprt">
+<a href="3_bases_de_dades_bd.html" class="prev"><span>&laquo; </span>Anterior</a> | <a href="5_sistemes_dinformaci_si.html" class="next"> Següent<span> &raquo;</span></a>
+</div>
+</div>
+<div id="main-wrapper">
+<div id="main"><a name="main"></a>
+<div id="nodeDecoration"><h1 id="nodeTitle">4. Sistema Gestor de Bases de Dades (SGBD)</h1></div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id96">
+<div class="iDevice emphasis0">
+<div id="ta96_85" class="block iDevice_content">
+<h1 class="BDAttol2">4.1 Definició</h1>
+<p class="BDANormal" style="text-align: justify;"><span style="font-size: medium;">Un SGBD és un conjunt de programes que proporcionen l’accés a la informació d’una base de dades. És la interfície entre la base de dades i els programes d'aplicació que accedeixen a aquesta.</span></p>
+<p class="BDANormal"><span style="font-size: medium;"><img src="Captura_de_pantalla_2016-07-13_a_les_14.15.36.png" width="643" height="432" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>
+<p class="BDANormal" style="text-align: justify;"><span style="font-size: medium;">L’SGBD que utilitzarem nosaltres serà MySQL, que, com molts altres, utilitza el llenguatge SQL per a interactuar amb les bases de dades.</span></p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id97">
+<div class="iDevice emphasis0">
+<div id="ta97_85" class="block iDevice_content">
+<h1 class="BDAttol2">4.2 Funcionament</h1>
+<p class="BDANormal" style="text-align: justify;"><span style="font-size: medium;">Quan un usuari o aplicació vol fer alguna operació sobre la BD (consulta, inserció, modificació de dades...) envia a l’SGBD la petició (instrucció en SQL). El SGBD processa la petició SQL i accedeix a la BD (a través del sistema operatiu) per a consultar o fer els canvis corresponents en les dades. A continuació el SGBD torna a l’aplicació o usuari les dades sol·licitades (o bé informació de com han anat les accions d’inserció, modificació, etc). </span><span style="font-size: medium; line-height: 1.5; text-align: left;"> </span></p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id100">
+<div class="iDevice emphasis0">
+<div id="ta100_85" class="block iDevice_content">
+<h1 class="BDAttol2">4.3 Funcions</h1>
+<p class="BDANormal" style="text-align: justify;"><span style="font-size: medium;">Un SGBD actua d’interfície entre les bases de dades i els usuaris per a realitzar les següents funcions:</span></p>
+<ul style="text-align: justify;">
+<li><span style="font-size: medium;"><b>Definir les dades: </b>el dissenyador de la BD pot crear les estructures de dades, les relacions entre elles, les restriccions d’integritat, etc. És a dir: crear les taules, vistes, etc., així com la posterior modificació i/o esborrat d’aquestes estructures.</span></li>
+<li><span style="font-size: medium;"><b>Manipular i consultar les dades: </b>un usuari o aplicació pot inserir dades (en les taules creades), modificar-les, esborrar-les i, sobretot, consultar-les d’una manera senzilla i eficient.</span></li>
+<li><span style="font-size: medium;"><b>Garantir la privacitat de les dades</b>: un administrador o usuari pot crear usuaris i assignar-los permisos per a consultar, modificar, esborrar... certes dades de la BD.</span></li>
+<li><span style="font-size: medium;"><b>Permetre la concurrència segura</b>: amb les transaccions s’impedeix que, per exemple, dos usuaris actualitzen alhora un saldo bancari.</span></li>
+<li><span style="font-size: medium;"><b>Disposar de mecanismes de recuperació</b>: còpies de seguretat.</span></li>
+</ul>
+<p style="text-align: justify;"><span style="font-size: medium;"> </span></p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper TrueFalseIdevice em_iDevice" id="id102">
+<div class="iDevice emphasis1" >
+<div class="iDevice_header"><h2 class="iDeviceTitle">Qüestió Veritat/Mentida</h2></div>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta102_100" class="block iDevice_content">
+
+</div>
+<div class="question">
+<form name="true-false-form-0b102" action="#" class="activity-form">
+<h3 class="js-sr-av">Qüestió  1</h3>
+<div id="taquestion0b102" class="block iDevice_content">
+<p><span style="font-size: medium;">Un SGBD és un conjunt de bases de dades</span></p>
+</div>
+<p class="iDevice_answer js-required">
+<label for="true0b102"><input type="radio" name="option0b102" id="true0b102" onclick="getFeedback(0,2,'0b102','truefalse')" /> Veritat</label> 
+<label for="false0b102"><input type="radio" name="option0b102" id="false0b102" onclick="getFeedback(1,2,'0b102','truefalse')" /> Mentida</label>
+</p>
+</form>
+<div id="s0b102" class="feedback js-feedback js-hidden">
+<h4 class="js-sr-av">Realimentació</h4>
+<p><strong id="s0b102-result" class="wrong">Mentida</strong></p>
+
+</div>
+</div>
+<div class="question">
+<form name="true-false-form-1b102" action="#" class="activity-form">
+<h3 class="js-sr-av">Qüestió  2</h3>
+<div id="taquestion1b102" class="block iDevice_content">
+<p><span style="font-size: medium;">Es pot gestionar una BD sense tindre un SGBD</span></p>
+</div>
+<p class="iDevice_answer js-required">
+<label for="true1b102"><input type="radio" name="option1b102" id="true1b102" onclick="getFeedback(0,2,'1b102','truefalse')" /> Veritat</label> 
+<label for="false1b102"><input type="radio" name="option1b102" id="false1b102" onclick="getFeedback(1,2,'1b102','truefalse')" /> Mentida</label>
+</p>
+</form>
+<div id="s1b102" class="feedback js-feedback js-hidden">
+<h4 class="js-sr-av">Realimentació</h4>
+<p><strong id="s1b102-result" class="wrong">Mentida</strong></p>
+
+</div>
+</div>
+<div class="question">
+<form name="true-false-form-2b102" action="#" class="activity-form">
+<h3 class="js-sr-av">Qüestió  3</h3>
+<div id="taquestion2b102" class="block iDevice_content">
+<p><span style="font-size: medium;">Si un usuari o programa vol fer una operació sobre una BD, envia l'ordre al SGBD i este s'encarrega d'accedir a la BD.</span></p>
+</div>
+<p class="iDevice_answer js-required">
+<label for="true2b102"><input type="radio" name="option2b102" id="true2b102" onclick="getFeedback(0,2,'2b102','truefalse')" /> Veritat</label> 
+<label for="false2b102"><input type="radio" name="option2b102" id="false2b102" onclick="getFeedback(1,2,'2b102','truefalse')" /> Mentida</label>
+</p>
+</form>
+<div id="s2b102" class="feedback js-feedback js-hidden">
+<h4 class="js-sr-av">Realimentació</h4>
+<p><strong id="s2b102-result" class="right">Veritat</strong></p>
+
+</div>
+</div>
+<div class="question">
+<form name="true-false-form-3b102" action="#" class="activity-form">
+<h3 class="js-sr-av">Qüestió  4</h3>
+<div id="taquestion3b102" class="block iDevice_content">
+<p><span style="font-size: medium;">El SGBD només actua sobre la BD però no envia cap informació a l'usuari o aplicació que va fer la petició.</span></p>
+</div>
+<p class="iDevice_answer js-required">
+<label for="true3b102"><input type="radio" name="option3b102" id="true3b102" onclick="getFeedback(0,2,'3b102','truefalse')" /> Veritat</label> 
+<label for="false3b102"><input type="radio" name="option3b102" id="false3b102" onclick="getFeedback(1,2,'3b102','truefalse')" /> Mentida</label>
+</p>
+</form>
+<div id="s3b102" class="feedback js-feedback js-hidden">
+<h4 class="js-sr-av">Realimentació</h4>
+<p><strong id="s3b102-result" class="wrong">Mentida</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper ListaIdevice em_iDevice" id="id103">
+<div class="iDevice emphasis1" >
+<div class="iDevice_header"><h2 class="iDeviceTitle">Activitat desplegable</h2></div>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta103_115" class="block instructions iDevice_content">
+<p><span style="font-size: medium;">Selecciona la funció del SGBD corresponent a cadascuna de les següents accions sobre una BD:</span></p>
+</div>
+
+<div class="activity" id="activity-103_116">
+<form name="cloze-form-103_116" action="#" onsubmit="showClozeScore('103_116',1);return false" class="activity-form">
+<div id="cloze103_116">
+<script type="text/javascript">var YOUR_SCORE_IS="La seva puntuació és"</script>
+<p><span style="font-size: medium;">Un programa bancari vol conéixer el saldo d'un client: 
+<label for="clozeBlank103_116.0" class="sr-av">Buits (1):</label>
+<select id="clozeBlank103_116.0">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.0">JXUwMDFiJXUwMDJjJXUwMDAxJXUwMDFkJXUwMDA2JXUwMDE5JXUwMDE4JXUwMDE1JXUwMDEzJXUwMDUyJXUwMDQ0JXUwMDA1JXUwMDA1JXUwMDAxJXUwMDE2</span>
+</span></p>
+<p><span style="font-size: medium;">Un informàtic vol afegit un nou camp (per exemple, l'e-mail) a la taula de clients: 
+<label for="clozeBlank103_116.1" class="sr-av">Buits (2):</label>
+<select id="clozeBlank103_116.1">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.1">JXUwMDFjJXUwMDIxJXUwMDAzJXUwMDBmJXUwMDA3JXUwMDA3JXUwMDFiJXUwMDUyJXUwMDQ0JXUwMDA1JXUwMDA1JXUwMDAxJXUwMDE2</span>
+</span></p>
+<p><span style="font-size: medium;">L'administrador d'una base de dades vol modificar els preus dels articles per a passar-los de pessetes a euros: 
+<label for="clozeBlank103_116.2" class="sr-av">Buits (3):</label>
+<select id="clozeBlank103_116.2">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.2">JXUwMDE1JXUwMDJjJXUwMDBmJXUwMDA3JXUwMDE5JXUwMDA1JXUwMDE5JXUwMDBkJXUwMDEzJXUwMDUyJXUwMDQ0JXUwMDA1JXUwMDA1JXUwMDAxJXUwMDE2</span>
+</span></p>
+<p><span style="font-size: medium;">Es vol impedir que mentre es fa una transferència bancària, que no es puga accedir a eixos comptes al mateix temps: 
+<label for="clozeBlank103_116.3" class="sr-av">Buits (4):</label>
+<select id="clozeBlank103_116.3">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.3">JXUwMDA4JXUwMDM1JXUwMDE3JXUwMDFmJXUwMDA4JXUwMDExJXUwMDA2JXUwMDE3JXUwMDQ1JXUwMDQzJXUwMDBjJXUwMDAxJXUwMDBkJXUwMDE2JXUwMDA3JXUwMDAwJXUwMDlhJXUwMDg2JXUwMDBkJXUwMDBhJXUwMDA4JXUwMDQxJXUwMDUzJXUwMDE2JXUwMDAyJXUwMDEyJXUwMDA3JXUwMDEz</span>
+</span></p>
+<p><span style="font-size: medium;">L'administrador vol fer una còpia de seguretat de les factures de fa més de 5 anys: 
+<label for="clozeBlank103_116.4" class="sr-av">Buits (5):</label>
+<select id="clozeBlank103_116.4">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.4">JXUwMDFjJXUwMDJkJXUwMDFhJXUwMDAzJXUwMDFmJXUwMDFjJXUwMDEyJXUwMDEzJXUwMDUyJXUwMDQ0JXUwMDAxJXUwMDQ1JXUwMDRkJXUwMDA4JXUwMDA2JXUwMDAyJXUwMDBmJXUwMDA3JXUwMDFhJXUwMDFlJXUwMDA4JXUwMDE2JXUwMDUzJXUwMDQ0JXUwMDAxJXUwMDQ1JXUwMDUyJXUwMDE3JXUwMDA2JXUwMDE2JXUwMDA1JXUwMDE1JXUwMDE3JXUwMDEzJXUwMDAyJXUwMDBhJXUwMDlh</span>
+</span></p>
+<p><span style="font-size: medium;">Per a alleugerir la taula de factures, es pretén esborrar d'ella les factures que tenen més de 5 anys: 
+<label for="clozeBlank103_116.5" class="sr-av">Buits (6):</label>
+<select id="clozeBlank103_116.5">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.5">JXUwMDE1JXUwMDJjJXUwMDBmJXUwMDA3JXUwMDE5JXUwMDA1JXUwMDE5JXUwMDBkJXUwMDEzJXUwMDUyJXUwMDQ0JXUwMDA1JXUwMDA1JXUwMDAxJXUwMDE2</span>
+</span></p>
+<p><span style="font-size: medium;">Un treballador del banc s'ha jubilat. L'administrador vol fer que este ja no puga accedir a la base de dades: 
+<label for="clozeBlank103_116.6" class="sr-av">Buits (7):</label>
+<select id="clozeBlank103_116.6">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.6">JXUwMDFmJXUwMDI2JXUwMDEzJXUwMDEzJXUwMDBmJXUwMDFhJXUwMDFkJXUwMDFiJXUwMDUyJXUwMDRjJXUwMDBkJXUwMDQxJXUwMDUwJXUwMDAyJXUwMDFiJXUwMDFmJXUwMDE3JXUwMDAyJXUwMDBhJXUwMDFkJXUwMDE1JXUwMDE1JXUwMDU0JXUwMDQ0JXUwMDAxJXUwMDQ1JXUwMDRjJXUwMDA5JXUwMDE2JXUwMDUzJXUwMDQ0JXUwMDA1JXUwMDA1JXUwMDAxJXUwMDE2</span>
+</span></p>
+<p><span style="font-size: medium;">Un informàtic vol crear una nova base de dades i crear taules en ella: 
+<label for="clozeBlank103_116.7" class="sr-av">Buits (8):</label>
+<select id="clozeBlank103_116.7">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.7">JXUwMDFjJXUwMDIxJXUwMDAzJXUwMDBmJXUwMDA3JXUwMDA3JXUwMDFiJXUwMDUyJXUwMDQ0JXUwMDA1JXUwMDA1JXUwMDAxJXUwMDE2</span>
+</span></p>
+<p><span style="font-size: medium;">Un programa vol calcular el saldo mig d'un compte bancari al llarg de l'any: 
+<label for="clozeBlank103_116.8" class="sr-av">Buits (9):</label>
+<select id="clozeBlank103_116.8">
+<option selected="selected"> </option><option value="Permetre concurrència segura">Permetre concurrència segura</option><option value="Definir dades">Definir dades</option><option value="Manipular dades">Manipular dades</option><option value="Garantir la privacitat de les dades">Garantir la privacitat de les dades</option><option value="Disposar de mecanismes de recuperació">Disposar de mecanismes de recuperació</option><option value="Consultar dades">Consultar dades</option>
+</select>
+<span style="display:none" id="clozeAnswer103_116.8">JXUwMDFiJXUwMDJjJXUwMDAxJXUwMDFkJXUwMDA2JXUwMDE5JXUwMDE4JXUwMDE1JXUwMDEzJXUwMDUyJXUwMDQ0JXUwMDA1JXUwMDA1JXUwMDAxJXUwMDE2</span>
+</span></p>
+<div class="block iDevice_buttons">
+<p>
+<input class="button" type="submit" name="getScore103_116" value="Comprova"  id="getScore103_116" />
+
+<input type="hidden" name="clozeOtras103_116" id="clozeOtras103_116" value=""/>
+
+<input type="hidden" name="clozeFlag103_116.strictMarking" id="clozeFlag103_116.strictMarking" value="false" />
+<input type="hidden" name="clozeFlag103_116.checkCaps" id="clozeFlag103_116.checkCaps" value="false" />
+<input type="hidden" name="clozeFlag103_116.instantMarking" id="clozeFlag103_116.instantMarking" value="false" />
+<span class="js-hidden js-warning">Habilita el javascript</span>
+</p>
+</div>
+<div class="score js-feedback" id="clozeScore103_116"></div>
+</div>
+</form>
+</div></div>
+</div>
+</div>
+</div>
+<p align="center">Llicenciat sota la  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Llicència Creative Commons Reconeixement NoComercial CompartirIgual 4.0</a></p></div>
+</div>
+<div id='bottomPagination'>
+<div class="pagination noprt">
+<a href="3_bases_de_dades_bd.html" class="prev"><span>&laquo; </span>Anterior</a> | <a href="5_sistemes_dinformaci_si.html" class="next"> Següent<span> &raquo;</span></a>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="my_js.js"></script></body></html>

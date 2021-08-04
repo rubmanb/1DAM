@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/CSS" href="biblioteca.css"?>
+<?xml-stylesheet href="biblioteca.css" media="screen"?>
+<biblioteca>
+    <autor>
+        <nom>John Ronald Reuel Tolkien</nom>
+            <llibres>
+                <llibre>
+                    <titol>El Hòbbit</titol>
+                    <any>2010</any>
+                    <idioma>català</idioma>
+                    <editorial>
+                        <nom>Edicions de la magrana</nom>
+                        <collecció>L'Esparver</collecció>
+                    </editorial>
+                </llibre>
+                <llibre>
+                    <titol>El senyor dels anells</titol>
+                    <subtitol>La germandat de l'anell</subtitol>
+                    <any>2002</any>
+                    <idioma>català</idioma>
+                    <editorial>
+                        <nom>Editorial Vicens Vives</nom>
+                    </editorial>
+                </llibre>
+            </llibres>
+    </autor>
+    <autor>
+        <nom>Isaac Asimov</nom>
+        <llibre>
+            <titol>Jo, robot</titol>
+            <any>2001</any>
+            <idioma>català</idioma>
+            <editorial>
+                <nom>Edicions Proa</nom>
+                <collecció>Proa Butxaca</collecció>
+            </editorial>
+        </llibre>
+    </autor>
+</biblioteca>

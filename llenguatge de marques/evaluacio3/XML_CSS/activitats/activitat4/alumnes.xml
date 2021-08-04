@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="alumnes.css"?>
+<?xml-stylesheet href="alumnes.css" media="screen"?>
+<alumnes cicle="ASIX">
+	<grup nom="1ASIX">
+		<alumne nia="101023">
+			<nom>
+				Jose
+			</nom>
+			<cognoms>
+				Rico Juan
+			</cognoms>
+			<cp>
+				46760
+			</cp>
+			<poblacio>
+				Tavernes
+			</poblacio>
+			<mail>
+				jrc@hotmail.com
+			</mail>
+		</alumne>
+		<alumne nia="101026">
+			<nom>
+				Rosa
+			</nom>
+			<cognoms>
+				Miranda Tur
+			</cognoms>
+			<cp>
+				46760
+			</cp>
+			<poblacio>
+				Tavernes
+			</poblacio>
+			<mail>
+				rmt@gmail.es
+			</mail>
+		</alumne>
+	</grup>
+	<grup nom="1DAM">
+		<alumne nia="101133">
+			<nom>
+				Salvador
+			</nom>
+			<cognoms>
+				Cuñat Soler
+			</cognoms>
+			<cp>
+				46760
+			</cp>
+			<poblacio>
+				Tavernes
+			</poblacio>
+			<mail>
+				scs@gmail.com
+			</mail>
+		</alumne>
+		<alumne nia="101042">
+			<nom>
+				Miguel
+			</nom>
+			<cognoms>
+				García Meló
+			</cognoms>
+			<cp>
+				46012
+			</cp>
+			<poblacio>
+				València
+			</poblacio>
+			<mail>
+				mgm@gmail.es
+			</mail>
+		</alumne>
+	</grup>
+</alumnes>

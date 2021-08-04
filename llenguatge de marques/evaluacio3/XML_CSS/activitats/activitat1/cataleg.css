@@ -1,0 +1,26 @@
+CD {
+    display: block;
+    margin-bottom: 30pt;
+    margin-left: 50px;
+    margin-right: 65%;
+    border: 2px solid blue;
+
+}
+
+titol {
+    display: block;
+    color: #ff0000;
+    font-size: 20pt;
+}
+
+artista {
+    display: block;
+    color: #0000ff;
+    font-size: 20pt;
+}
+
+pais, companyia {
+    display: block;
+    color: #000000;
+    margin-left: 20pt;
+}

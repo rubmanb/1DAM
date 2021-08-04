@@ -1,0 +1,743 @@
+-- EXERCICIS TEMA 5. PROCEDIMENTS EMMAGATZEMATS
+use lliga1213;
+/*
+EXERCICI 1:
+Fes la funció maxGolejador que li passes com a paràmetre
+un equip i retorna el dorsal del golejador d’eixe equip que més gols
+ha marcat. 
+*/
+drop function if exists maxGolejador;
+
+delimiter //
+
+CREATE FUNCTION maxGolejador(codiEquip varchar(3)) RETURNS int
+begin 
+
+return (select dorsal
+			from golejadors as g
+			where g.equip = codiEquip
+			and g.gols = (select max(gols)
+							from golejadors
+                            where equip = codiEquip
+                            )
+		limit 1                 
+		);
+end //
+
+delimiter ;
+
+-- A continuació fes les següents crides per a:
+	
+-- a) Mostrar per pantalla el dorsal que més gols ha marcat del Barça (codi “bar”).
+select maxGolejador("bar");
+
+-- b) Mostrar el dorsal que més gols ha marcat de cada equip.
+select codi, maxGolejador(codi)
+from equips;
+	
+-- c) Mostrar el nom del golejador que més gols ha marcat de cada equip.
+select equip, nom
+from jugadors
+where dorsal = maxGolejador(equip);
+
+-- O bé esta opció. Supose que aniria més ràpid ja que no cridaria a la funció 
+-- tantes voltes.
+select codi, maxGolejador(equips.codi), (select nom
+									from jugadors
+                                    where equip = equips.codi
+                                      and dorsal = maxGolejador(equips.codi))
+from equips;
+	
+
+-- d) Incrementar 10000 euros als jugadors que més gols han marcat en el seu equip. 
+update jugadors
+set sou = sou + 10000
+where dorsal = maxGolejador(equip);
+
+
+/*
+EXERCICI 2:
+Fes el procediment marcar, que li passes com a paràmetre
+un jugador (és a dir: codi d’equip i dorsal) i un partit (és a dir:
+equip de casa i de fora) i incremente en 1 els gols d’eixe
+golejador i també 1 en un gol el resultat d’eixe partit. 
+El procediment ha de retornar el nou resultat del partit 
+(gols de casa i gols de fora). 
+*/
+drop procedure if exists marcar;
+
+DELIMITER //
+
+create procedure marcar (in eqGol varchar(3), in dorsalGol int, in eqCasa varchar(3), in eqFora varchar(3), out gcasa int, out gfora int) 
+begin
+	
+    -- +1 gol al jugador que ha marcat
+    update golejadors
+			set gols = gols + 1 
+			where equip = eqGol
+			and dorsal = dorsalGol;
+	
+    -- +1 gol a l'equip de casa (si el jugador és d'eixe equip de casa)
+    update partits
+		set golsc = golsc + 1
+		where equipc = eqCasa
+		  and equipf = eqFora
+		  and equipc = eqGol;
+    
+    -- +1 gol a l'equip de fora (si el jugador és d'eixe equip de fora)
+    update partits
+		set golsf = golsf + 1 
+		where equipc = eqCasa
+		  and equipf = eqFora
+		  and equipf = eqGol;
+    
+    -- Exportem resultats del partit
+    select golsc, golsf into gcasa, gfora
+	from partits
+	where equipc = eqCasa
+	  and equipf = eqFora
+	limit 1;  -- Per si hi haguera un partit "repetit"
+    
+
+end //
+
+DELIMITER ;
+
+-- A continuació:
+
+-- a) Fes la crida per a dir que ha marcat el dorsal 10 del Barça en el Barça-València.
+call marcar("bar", 10, "bar", "val", @gc, @gf);
+
+-- b) Mostra per pantalla el resultat del partit (amb els valors retornats abans)
+select @gc as EquipCasa, @gf as EquipFora;
+
+-- Comprovacions
+select golsc, golsf
+from partits
+where equipc = 'bar'
+and equipf = 'val';
+
+
+/*
+EXERCICI 3;
+Crea el procediment inserirGolejador al qual li passes 
+com a paràmetre el dorsal, el codi de l’equip, el nom del jugador, 
+la quantitat de partits jugats i la quantitat de gols marcats. 
+El procediment caldrà guardar eixa informació (en les taules de 
+jugadors i golejadors) però caldrà tindre en compte primer 
+si eixe jugador ja existia o  no en la base de dades 
+(ja que haurà de fer inserts o updates en cada cas). 
+*/
+
+drop procedure inserirGolejador;
+delimiter //
+
+create procedure inserirGolejador(d int, e char(3), n varchar(30), qpj int, qgm int) 
+begin
+declare q int;
+
+select count(*) into q
+from jugadors
+where equip = e and dorsal = d;
+
+if q = 0 then
+  insert into jugadors(equip, dorsal, nom) values (e, d, n);
+else
+  update jugadors set nom = n where equip = e and dorsal = d;
+end if;
+
+select count(*) into q
+from golejadors
+where equip = e and dorsal = d;
+
+if q = 0 then
+  insert into golejadors(equip, dorsal, partits, gols) values (e, d, qpj, qgm);
+else
+  update golejadors set partits = qpj, gols = qgm
+  where equip = e and dorsal = d;
+end if;
+
+end;
+//
+
+delimiter ;
+
+-- A continuació fes 3 crides al procediment per comprovar que funciona correctament:
+-- a)	Una crida amb un jugador que no existisca
+call inserirGolejador(100, 'ath', 'Pepinho', 10, 2);
+-- b)	Una crida amb un jugador que existisca com a jugador 
+-- però no com a golejador
+call inserirGolejador(1, 'ath', 'Gorka Iraizoz', 12, 1);
+-- c)	Una crida amb un jugador que existisca com a jugador i golejador
+call inserirGolejador(1, 'ath', 'Gorka Iraizoz', 13, 2);
+
+
+/*
+EXERCICI 4:
+Crea el procediment inserirJornades a la quan se li passa 
+una quantitat de jornades i ha d’inserir tantes jornades 
+com diga eixe número. La data no es posarà 
+i el número de les jornades serà correlatiu a l’útima jornada 
+que hi ha guardada en la taula de jornades. 
+A continuació, crida al procediment per a inserir 10 jornades. 
+Comprova que s’han creat bé.
+*/
+
+drop procedure inserirJornades;
+
+delimiter //
+
+create procedure inserirJornades(qj int)
+begin
+declare maxJor int;
+declare jor int;
+
+select max(num) into maxJor from jornades;
+
+if maxJor is null then
+  set maxJor = 0;
+end if;
+
+set jor=1;
+while (jor<=qj) do
+  insert into jornades(num) values(maxJor + jor);
+  set jor = jor + 1;
+end while;
+
+
+end
+//
+
+delimiter ;
+
+call inserirJornades(10);
+
+
+/*
+EXERCICI 5:
+Funció tipusJugador, que li passes un jugador (dorsal i equip) 
+i retorna una paraula depenent dels gols marcats. Si 0 gols, “cono”; 
+entre 1 i 10 “normal”; entre 11 i 20 “bo”; entre 20 i 30 “crack”; 
+i més de 30 “megacrack”. Fes-ho amb l’estructura del CASE. 
+*/
+
+delimiter //
+
+create function tipusJugador (d int, e char(3)) returns char(10)
+begin
+
+declare qgols int default 0;
+
+select gols into qgols
+from golejadors
+where equip = e
+  and dorsal = d;
+
+case 
+	when qgols = 0	then return "cono";
+	when qgols<=10 	then return "normal";
+	when qgols<=20	then return "bo";
+	when qgols<=30	then return "crack";
+	else			 	 return "megacrack";
+end case;
+
+end;
+//
+
+delimiter ;
+
+select tipusJugador(17, "rma");  -- Arbeloa
+
+
+-- A continuació (usant una crida a la funció):
+
+
+-- a)	Mostra de cada jugador del Barça mostra el nom 
+--  i el tipus de jugador que és.
+ 
+select nom, tipusJugador(dorsal, equip)
+from jugadors
+where equip = "bar";
+
+-- b)	Mostra els megacracks de la lliga: nom del jugador 
+-- i nom curt del seu equip.
+select jugadors.nom, equips.nomcurt
+from jugadors, equips
+where jugadors.equip = equips.codi
+  and tipusJugador(dorsal, equip) = "megacrack";
+
+-- c) Mostra quants megacracks té cada equip.
+select equip, count(*)
+from jugadors
+where tipusJugador(dorsal, equip) = "megacrack"
+group by equip;
+
+
+/*
+EXERCICI 6:
+Funció quantsJugadors que li passes com a paràmetre 
+el codi d’un equip i retorna la quantitat de jugadors d’eixe equip.
+*/
+drop function if exists quantsJugadors ;
+
+delimiter //
+
+create function quantsJugadors(e char(3)) returns int
+begin
+return (select count(*) from jugadors where equip = e);
+end
+//
+
+delimiter ;
+
+
+-- Després, mitjançant crides a eixa funció, fes els següents problemes:
+
+-- a)	Mostra la quantitat de jugadors del Barça
+select quantsJugadors('bar');
+
+-- b)	Mostra de cada equip de més de 25 jugadors: el codi, 
+-- el nom curt i la quantitat de jugadors que té.
+select codi, nomcurt, quantsJugadors(codi)
+from equips
+where quantsJugadors(codi) > 25;
+
+ -- c)	Modifica la taula d’equips. Cal incrementar un 10% el pressupost 
+ -- dels equips que tenen més de 25 jugadors.
+update equips
+set pressupost = pressupost * 1.1
+where quantsJugadors(codi) > 25;
+
+ -- d)	Modifica la taula d’equips. Cal incrementar 1000 euros de 
+ -- pressupost per cada jugador que tinguen.
+update equips
+set pressupost = pressupost + (1000 * quantsJugadors(codi));
+
+
+ -- e) Esborra els equips que no tinguen jugadors
+delete
+from equips
+where quantsJugadors(codi) = 0;
+
+/*
+EXERCICI 7
+Volem fer inserts en la taula de jugadors però de forma que si dóna 
+algun error, que faça constància en algun lloc del moment on s’ha produït 
+l’error i quin error.
+*/
+create table errors(
+dia date,
+hora time,
+taula char(20),
+error char(40)
+);
+
+DELIMITER //
+DROP PROCEDURE inserir_jugador //
+
+CREATE PROCEDURE inserir_jugador(p_equip char(3), p_dorsal int, p_nom varchar(30),
+           p_lloc varchar(10), p_sou int)
+BEGIN
+-- DECLAREM UN HANDLER
+DECLARE CONTINUE HANDLER FOR 1062
+BEGIN
+	insert into errors values 
+		(current_date, current_time, "jugadors", "Jugador ja existeix");
+END;
+
+-- DECLAREM UN ALTRE HANDLER
+DECLARE CONTINUE HANDLER FOR 1452
+BEGIN
+	insert into errors values 
+		(current_date, current_time, "jugadors", "Equip inexistent");
+END;
+
+-- FEM L'INSERT QUE POT PROVOCAR L'ERROR
+insert into jugadors(equip, dorsal, nom, lloc, sou) values
+	(p_equip, p_dorsal, p_nom, p_lloc, p_sou);
+
+END; //
+
+DELIMITER ;
+call inserir_jugador("bar", 10, "kk", "davanter", 10);
+call inserir_jugador("kkk", 1000, "kk", "davanter", 10);
+call inserir_jugador("bar", 11, "kk", "davanter", 10);
+
+select * from errors;
+
+
+
+/* 
+EXERCICI 8:
+Fes la funció llistaJugadors, a la qual li passes un codi d’equip
+i un lloc de jugador (“porter”, “defensa”, ...) 
+i retorna una cadena de caràcters amb els noms dels jugadors 
+d’eixe equip en eixa posició, separats per comes. 
+Recorda que pots usar la funció concat.
+*/
+
+use lliga1213;
+
+delimiter //
+
+drop function if exists llistaJugadors//
+
+create function llistaJugadors(p_equip char(3), p_lloc varchar(10)) returns varchar(400)
+begin
+declare fi boolean;
+declare cadena varchar(400) default "";
+declare v_nom varchar(30);
+
+declare c_jugadors cursor for
+  select nom
+  from jugadors
+  where equip = p_equip
+    and lloc = p_lloc;
+    
+declare continue handler for not found
+  set fi = true;
+  
+set fi = false;
+
+open c_jugadors;
+
+repeat
+	fetch c_jugadors into v_nom;
+    if (!fi) then
+		if (cadena = "") then
+		  set cadena = v_nom;
+		else
+		  set cadena = concat(cadena, ", ", v_nom);
+		end if;
+    end if;
+    
+until fi = true end repeat;
+
+close c_jugadors;
+
+return cadena;
+
+
+end //
+
+delimiter ;
+
+-- Prova d'execució de la funció:
+select llistaJugadors("rma", "porter");
+
+/*
+EXERCICI 9:
+Usant la funció anterior, mostra de cada equip els seus 
+davanters, defenses, mitjos i porters.
+*/
+
+select codi as "Equip", "porters" as "Lloc", llistaJugadors(codi, "porter") as "Llista de jugadors" from equips
+union
+select codi, "defenses", llistaJugadors(codi, "defensa") from equips
+union
+select codi, "mitjos", llistaJugadors(codi, "mig") from equips
+union
+select codi, "davanters", llistaJugadors(codi, "davanter") from equips
+order by 1, 2;
+
+/*
+EXERCICI 10:
+En la taula de golejadors, entre altres camps estan: gols, 
+gtitular i gsuplent. Realment el camp de gols no hauria d’estar ja que 
+es pot calcular com la suma dels altres dos però està per optimitzar 
+consultes, etc. 
+a) Fes els triggers necessaris per a assegurar que el camp gols 
+sempre serà la suma dels altres dos.
+*/
+delimiter //
+
+-- Solució:
+-- Haurem de fer 2 triggers:
+-- Un per a quan s'inserisca un golejador nou
+-- I un altre per a quan es modifique un jugador (per si canvia els gols,
+-- gols de titular o gols de suplent).
+
+drop trigger if exists bef_ins_golejadors //
+
+create trigger bef_ins_golejadors
+before insert on golejadors
+for each row 
+begin
+  set new.gols = new.gtitular + new.gsuplent;
+end //
+
+
+drop trigger if exists bef_upd_golejadors //
+
+create trigger bef_upd_golejadors
+before update on golejadors
+for each row
+begin
+  set new.gols = new.gtitular + new.gsuplent;
+end //
+
+
+/*
+b) Fes alguna inserció en la taula de golejadors i alguna modificació, 
+posant aposta els gols que no sumen els gols com a titular i com a suplent. 
+Després comprova que ha funcionat: mira si els gols són igual 
+a la suma dels altres dos camps.
+*/
+
+delimiter ;
+
+-- Després de la següent inserció, els 3 camps estaran a null
+-- ja que com no posem cap valor per a gtitular i gsuplent, 
+-- es posa un nul. I, per tant, com el trigger fa: gols = gsuplent + gtitular,
+-- tenim que nul + nul = nul. Per tant, en compte de 2 gols, posarà null
+call inserirGolejador(100, "bar", "Pep", 10, 2); 
+
+select * from golejadors where equip = "bar" and dorsal = 100;
+
+-- Després d'este update 
+-- el total de gols serà null ja que null + 3 = null
+update golejadors
+set gtitular = 3
+where equip = "bar" and dorsal = 100;
+
+select * from golejadors where equip = "bar" and dorsal = 100;
+
+-- Després d'este update el total de gols serà 5 ja que 2 + 3 = 5
+update golejadors
+set gsuplent = 2
+where equip = "bar" and dorsal = 100;
+
+select * from golejadors where equip = "bar" and dorsal = 100;
+
+-- Després d'este update el total de gols serà 5
+-- ja que el trigger canvia eixe 7 (el new.gols) per la suma dels 
+-- altres dos camps.
+update golejadors
+set gols = 7
+where equip = "bar" and dorsal = 100;
+
+select * from golejadors where equip = "bar" and dorsal = 100;
+
+
+-- Anem a esborrar-lo per a tornar-lo a inserir després:
+delete from golejadors where equip = "bar" and dorsal = 100;
+
+-- L'inserim amb els gols que no quadren amb gtitular i gsuplent (aposta)
+-- És a dir: figura que, per error, hem posat que els gols totals són 7
+-- però els gtitular són 4 i els gsuplent són 2. Després comprovarem
+-- que el trigger ha funcionat i fa que els gols totals siguen 6 i no 7.
+insert into golejadors(equip, dorsal, gols, gtitular, gsuplent)
+values ("bar", 100, 7, 4, 2); 
+
+select * from golejadors where equip = "bar" and dorsal = 100;
+
+/*
+11. Volem tindre en la taula d’equips un camp que guarde la quantitat 
+de defenses que té cada equip (encara que sabem que serà un camp redundant, 
+ja que es podria calcular a partir de la taula de jugadors). 
+Per a això, fes el següent:
+*/
+use futbol;
+
+-- a) Afig a la taula d’equips el camp qdefenses.
+alter table equips
+add column qdefenses int;
+
+-- b) Ompli els valors d’eixa columna per a cada equip existent en la base de dades.
+update equips
+set qdefenses = (select count(*)
+				  from jugadors
+                  where lloc = "defensa"
+                    and jugadors.equip = equips.codi);
+ 
+delimiter // 
+
+-- c) Fes els triggers necessaris per a mantindre sempre actualitzat eixe camp.
+
+-- inserció jugador
+drop trigger if exists ins_jug//
+
+create trigger ins_jug
+after insert on jugadors
+for each row
+begin
+	 if new.lloc = "defensa" then
+	  update equips
+		set qdefenses = qdefenses + 1
+		where codi = new.equip;
+	 end if;
+end;
+//
+
+-- esborrat jugador.
+drop trigger if exists del_jug//
+
+create trigger del_jug
+after delete on jugadors
+for each row
+begin
+	 if old.lloc = "defensa" then
+	  update equips
+		set qdefenses = qdefenses - 1
+		where codi = old.equip;
+	 end if;
+end;
+//
+
+-- modificació de jugador
+-- Realment és com si esborràrem el jugador que hi havia
+-- i inserírem un jugador nou. Per tant:
+drop trigger if exists upd_jug//
+
+create trigger upd_jug
+after update on jugadors
+for each row
+begin
+	if old.lloc = "defensa" then
+	  update equips
+		set qdefenses = qdefenses - 1
+		where codi = old.equip;
+	 end if;
+     
+	if new.lloc = "defensa" then
+	  update equips
+		set qdefenses = qdefenses + 1
+		where codi = new.equip;
+	 end if;
+end;
+//
+
+
+-- d) Fes canvis amb els defenses de la base de dades per a vore que els triggers funcionen
+
+select qdefenses from equips where codi = "ath"; -- 15
+
+-- Afegim un defensa del Bilbao:
+insert into jugadors(equip, dorsal, lloc, nom)
+values ("ath", 101, "defensa", "Pep");
+select qdefenses from equips where codi = "ath"; -- 16
+
+-- Afegim un jugador, NO defensa, del Bilbao:
+insert into jugadors(equip, dorsal, lloc, nom)
+values ("ath", 102, "mig", "Pepa");
+select qdefenses from equips where codi = "ath"; -- 16
+
+-- Canviem de lloc un jugador del Bilbao. Ja no és defensa sinó mig:
+update jugadors
+set lloc = "mig" where equip = "ath" and dorsal = 101;
+select qdefenses from equips where codi = "ath"; -- 15
+
+-- Canviem de lloc un jugador del Bilbao. Ja no és mig sinó defensa:
+update jugadors
+set lloc = "defensa" where equip = "ath" and dorsal = 102;
+select qdefenses from equips where codi = "ath"; -- 16
+
+-- Canviem d'equip a un defensa del bilbao. Ara serà del Barça:
+select qdefenses from equips where codi = "bar"; -- 10
+update jugadors
+set equip = "bar" where equip = "ath" and dorsal = 102;
+select qdefenses from equips where codi = "bar"; -- 11
+select qdefenses from equips where codi = "ath"; -- 15
+
+
+/*
+EXERCICI 12
+Volem tindre en la taula de rius un camp que guarde la quantitat de 
+províncies per on passa cadascun. Per a això, fes el següent:
+*/
+use geografia;
+
+-- a) Afig a la taula de rius el camp qprov.
+alter table rius
+  add column qprov int;
+
+-- b) Ompli els valors d’eixa columna per a cada riu existent en la base de dades.
+update rius
+  set qprov = (select count(*)
+				from passaper
+				where passaper.riu = rius.codi);
+
+-- c) Fes els triggers necessaris per a mantindre sempre actualitzat eixe camp.
+delimiter //
+
+-- Si anem a modificar el mateix registre estem inserint/modificant, 
+-- cal fer el trigger before i no after:
+drop trigger if exists b_i_rius //
+create trigger b_i_rius before insert on rius for each row
+begin
+  set new.qprov = 0;
+end //
+
+drop trigger if exists b_u_rius //
+create trigger b_u_rius before update on rius for each row
+begin
+  -- Nota: no podem posar açò:    set new.qprov = old.qprov;
+  -- ...ja que no funcionaria el after update, delete i insert
+  -- de passaper, ja que fan updates dels rius. Per tant, farem:
+  set new.qprov = (select count(*)
+					from passaper
+                    where riu = new.codi);
+end //
+
+-- Si només volem fer les accions corresponents si l'acció no ha donat error, 
+-- convé fer el trigger after i no before (ja que així, si dóna error l'update o insert,
+-- no es farà eixe update o insert però tampoc les accions associades del trigger):
+
+drop trigger if exists a_d_passaper //
+create trigger a_d_passaper after delete on passaper for each row
+begin
+  update rius
+    set qprov = qprov - 1 
+    where rius.codi = old.riu;
+end //
+
+drop trigger if exists a_i_passaper //
+create trigger a_i_passaper after insert on passaper for each row
+begin
+  update rius
+    set qprov = qprov + 1 
+    where rius.codi = new.riu;
+end //
+
+drop trigger if exists a_u_passaper //
+create trigger a_u_passaper after update on passaper for each row
+begin
+  if old.riu != new.riu then
+	  update rius
+		set qprov = qprov - 1
+		where rius.codi = old.riu;
+		
+	  update rius
+		set qprov = qprov + 1 
+		where rius.codi = new.riu;
+  end if;
+end //
+
+delimiter ;
+
+-- d) Fes canvis amb els rius de la base de dades per a vore que els triggers funcionen.
+
+-- Afegim un riu amb un qprov erroni:
+insert into rius(codi, nom, qProv) values (100, "kk", 222);
+
+-- Modifiquem un riu amb un qprov erroni:
+update rius set qprov = 222 where codi = 100;
+
+-- Fem que un riu passe per una província més, però la província no existia:
+insert into passaper(riu, prov) values (100, 555);
+
+-- Fem que un riu passe per una província més, i la província existeix:
+insert into passaper(riu, prov) values (100, 1);
+insert into passaper(riu, prov) values (100, 2);
+insert into passaper(riu, prov) values (100, 3);
+
+-- Fem que un riu ja no passe per una província per on passava:
+delete from passaper where riu=100 and prov = 2;
+
+-- Modifiquem la província d'un registre de passaper:
+update passaper set prov = 11 where riu = 100 and prov = 2;
+
+-- Modifiquem el riu d'un registre de passaper:
+update passaper set riu = 100 where riu = 100 and prov = 2;
+
+

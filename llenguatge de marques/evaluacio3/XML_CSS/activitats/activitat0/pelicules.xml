@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/CSS" href="pelicules.css"?>
+<?xml-stylesheet media="screen" href="pelicules.css"?>
+<!DOCTYPE pelis SYSTEM "pelicules.dtd">
+<pelis>
+	<pelicula>
+		<titol>
+			Mary Poppins Returns
+		</titol>
+		<director>
+			Rob Marshall
+		</director>
+	</pelicula>
+	<pelicula>
+		<director>
+			Steven Spielberg
+		</director>
+		<titol>
+			Ready Player One
+		</titol>
+	</pelicula>
+</pelis>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/CSS" href="text.css"?>
+<?xml-stylesheet media="screen" href="text.css"?>
+<text>
+    <titol>
+        Introducció a XML
+    </titol>
+    <paràgraf>
+        El <abreviatura> XML </abreviatura>
+        defineix com crear llenguatges de marques.
+    </paràgraf>
+    <paràgraf>
+        Les marques s'insereixen a un document
+        de text per guardar informació. 
+    </paràgraf>
+    <http> 
+        www.exemple.com 
+    </http>
+</text>

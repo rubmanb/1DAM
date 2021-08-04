@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="notes.css"?>
+<institut nom="Institut Jaume II">
+	<cicles>
+		<especialitat nom="Informàtica">
+			<cicle id="ASIX">
+				Administració de Sistemes Informàtics i Xarxes
+			</cicle>
+			<cicle id="DAM">
+				Desenvolupament d'aplicacions multiplataforma
+			</cicle>
+		</especialitat>
+	</cicles>
+	<notes>
+		<classe nom="ASIX">
+			<alumne aprovat="NO">
+				<nom>
+					Jaume Cantus
+				</nom>
+				<nota>
+					3
+				</nota>
+			</alumne>
+			<alumne aprovat="SI">
+				<nom>
+					Alvaro Ruiz
+				</nom>
+				<nota>
+					6
+				</nota>
+			</alumne>
+			<alumne aprovat="SI">
+				<nom>
+					Juan Pérez
+				</nom>
+				<nota>
+					5
+				</nota>
+			</alumne>
+		</classe>
+	</notes>
+</institut>

@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ca" xml:lang="ca" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>3. Bases de Dades (BD) | Bases de Dades </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-language" content="ca" />
+<meta name="author" content="Abdó Garcia" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Mostra",hide:"Amaga",showFeedback:"Mostra realimentació",hideFeedback:"Amaga realimentació",correct:"Correcte",incorrect:"Incorrecte",menu:"Menú"}</script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<div id="header" >Bases de Dades</div>
+<div id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">TEMA 1. Introducció a les BD</a></li>
+   <li><a href="0_objectius_etc.html" class="no-ch">0. Objectius, etc</a></li>
+   <li><a href="1_introducci.html" class="no-ch">1. Introducció</a></li>
+   <li><a href="2_fitxers.html" class="no-ch">2. Fitxers</a></li>
+   <li id="active"><a href="3_bases_de_dades_bd.html" class="active no-ch">3. Bases de Dades (BD)</a></li>
+   <li><a href="4_sistema_gestor_de_bases_de_dades_sgbd.html" class="no-ch">4. Sistema Gestor de Bases de Dades (SGBD)</a></li>
+   <li><a href="5_sistemes_dinformaci_si.html" class="no-ch">5. Sistemes d'Informació (SI)</a></li>
+</ul>
+</div>
+<div id='topPagination'>
+<div class="pagination noprt">
+<a href="2_fitxers.html" class="prev"><span>&laquo; </span>Anterior</a> | <a href="4_sistema_gestor_de_bases_de_dades_sgbd.html" class="next"> Següent<span> &raquo;</span></a>
+</div>
+</div>
+<div id="main-wrapper">
+<div id="main"><a name="main"></a>
+<div id="nodeDecoration"><h1 id="nodeTitle">3. Bases de Dades (BD)</h1></div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id83">
+<div class="iDevice emphasis0">
+<div id="ta83_85" class="block iDevice_content">
+<h1 class="BDAttol2">3.1. Definicions</h1>
+<p class="BDANormal" style="text-align: justify;"><span style="font-size: medium;"><b>Base de dades</b>: conjunt de dades estructurades, amb redundància controlada que capten les interrelacions i restriccions del món real i emmagatzemades en suport secundari, de forma que els usuaris o aplicacions puguen consultar o modificar eixes dades de forma eficient. Això s’aconsegueix amb el llenguatge SQL.</span></p>
+<p class="BDANormal" style="margin-left: 30px; text-align: justify;"><span style="font-size: medium;"><span style="text-decoration: underline;">Exemple</span>: la BD “institut”, on estaran les dades de tot un institut.</span></p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id84">
+<div class="iDevice emphasis0">
+<div id="ta84_85" class="block iDevice_content">
+<p class="BDANormal"><span style="font-size: medium;"><b>Taula</b>: Una base de dades està formada per diverses taules. Una taula guarda informació d’objectes del mateix tipus.</span></p>
+<p class="BDAttol2" style="margin-left: 30px;"><span style="font-size: medium;"><span style="text-decoration: underline;">Exemple</span>: la taula “alumnes” de la base de dades “institut”.</span></p>
+<p class="BDAttol2"></p>
+<table border="1" cellspacing="0" cellpadding="0" align="center" style="width: 589px; height: 167px;">
+<tbody>
+<tr>
+<td width="358" colspan="4">
+<p align="center"><b>ALUMNES</b></p>
+</td>
+</tr>
+<tr>
+<td width="73">
+<p align="center"><b>DNI</b><b></b></p>
+</td>
+<td width="130">
+<p align="center"><b>NOM</b></p>
+</td>
+<td width="79">
+<p align="center"><b>DATA_NAIX</b></p>
+</td>
+<td width="77">
+<p align="center"><b>TEL</b></p>
+</td>
+</tr>
+<tr>
+<td width="73">
+<p align="center">11223344A</p>
+</td>
+<td width="130" style="text-align: center;">
+<p>Joan Antoni Ciscar Peris</p>
+</td>
+<td width="79">
+<p align="center">1995-10-01</p>
+</td>
+<td width="77">
+<p align="center">555 962 123</p>
+</td>
+</tr>
+<tr>
+<td width="73">
+<p align="center">22334455F</p>
+</td>
+<td width="130" style="text-align: center;">
+<p>Maria Ciscar Peris</p>
+</td>
+<td width="79">
+<p align="center">1995-10-01</p>
+</td>
+<td width="77">
+<p align="center">555 962 123</p>
+</td>
+</tr>
+<tr>
+<td width="73">
+<p align="center">33445566A</p>
+</td>
+<td width="130" style="text-align: center;">
+<p>M. Josep Mas Ortolà</p>
+</td>
+<td width="79">
+<p align="center">1996-02-16</p>
+</td>
+<td width="77">
+<p align="center">555 635 287</p>
+<p></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id85">
+<div class="iDevice emphasis0">
+<div id="ta85_85" class="block iDevice_content">
+<p class="BDANormal"><span style="font-size: medium;"><b>Atributs</b>: cadascuna de les dades que es vol saber de cada objecte</span></p>
+<p class="BDANormal" style="margin-left: 30px;"><span style="font-size: medium;"><span style="text-decoration: underline;">Exemples</span>: dni, nom, data_naix...</span></p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id86">
+<div class="iDevice emphasis0">
+<div id="ta86_85" class="block iDevice_content">
+<p class="BDANormal"><span style="font-size: medium;"><b>Registres</b>: un registre és el conjunt dels valors de cadascun dels atributs d’una taula referents a un mateix objecte.</span></p>
+<p class="BDANormal" style="margin-left: 30px;"><span style="font-size: medium;"><span style="text-decoration: underline;">Exemple</span>: la informació d’un alumne de la taula “alumnes” és 1 registre:</span></p>
+<table border="1" cellspacing="0" cellpadding="0" align="center" style="width: 608px; height: 26px;">
+<tbody>
+<tr>
+<td width="72">
+<p align="center" style="text-align: center;">22334455F</p>
+</td>
+<td width="132">
+<p style="text-align: center;">Maria Ciscar Peris</p>
+</td>
+<td width="78">
+<p align="center" style="text-align: center;">1994-12-02</p>
+</td>
+<td width="71">
+<p align="center">555 962 123</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id87">
+<div class="iDevice emphasis0">
+<div id="ta87_85" class="block iDevice_content">
+<p class="BDANormal"><span style="font-size: medium;"><b>SGBD</b>: programa que permet als usuaris i programes interactuar amb les BD.</span></p>
+<p class="BDANormal" style="margin-left: 30px;"><span style="font-size: medium;"><span style="text-decoration: underline;">Exemples</span>: MySQL, PostgreSQL, Oracle, Informix...</span></p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id89">
+<div class="iDevice emphasis0">
+<div id="ta89_85" class="block iDevice_content">
+<h1 class="BDAttol2">3.2. Avantatges de les BD respecte als fitxers</h1>
+<ul>
+<li class="BDANormal"><span style="font-size: medium;">Fàcil accés a dades interrelacionades.</span></li>
+<li class="BDANormal"><span style="font-size: medium;">Fàcil modificació, inserció i esborrat de les dades.</span></li>
+<li class="BDANormal"><span style="font-size: medium;">Evita la redundància de la informació.</span></li>
+<li class="BDANormal"><span style="font-size: medium;">Garanteix la integritat de la informació (evita contradiccions, etc).</span></li>
+<li class="BDANormal"><span style="font-size: medium;">Permet el control de permisos als usuaris sobre les dades.</span></li>
+<li class="BDANormal"><span style="font-size: medium;">Permet la concurrència per a diversos usuaris simultanis.</span></li>
+<li class="BDANormal"><span style="font-size: medium;">S’aconsegueix independitzar dades amb les aplicacions que hi accedeixen.</span></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper FreeTextIdevice" id="id92">
+<div class="iDevice emphasis0">
+<div id="ta92_85" class="block iDevice_content">
+<h1 class="BDAttol2">3.3. Tipus de BD</h1>
+<p class="BDANormal" style="text-align: justify;"><span style="font-size: medium;">Ja veurem que, per a dissenyar una BD, cal seguir un model de dades determinat. Depenent del model de dades obtindrem un tipus de bases de dades diferent.</span></p>
+<ul>
+<li><span style="font-size: medium;"><b><i>Tipus de BD clàssics</i></b></span>
+<ul>
+<li>BD jeràrquiques</li>
+<li>BD en xarxa</li>
+<li>BD relacional</li>
+</ul>
+</li>
+</ul>
+<p class="western"><span style="font-size: medium;"> </span></p>
+<ul>
+<li><span style="font-size: medium;"><b><i>Tipus de BD OO (Orientades a Objectes) </i></b></span>
+<ul>
+<li>BD orientades a objectes pur</li>
+<li>BD objecte-relacionals</li>
+</ul>
+</li>
+</ul>
+<p class="western"><span style="font-size: medium;"> </span></p>
+<p class="BDANormal" style="text-align: justify;"><span style="font-size: medium;">Les BD més utilitzades amb molta diferència són les <b>BD relacionals</b>, que són les que dissenyarem en este mòdul, usant el model relacional. El nom es déu a les relacions que hi haurà entre les diferents taules de la BD.</span></p>
+<p class="BDANormal" style="text-align: justify;"><span style="font-size: medium;">Més endavant també vorem les <b>BD objecte-relacionals</b>, que vénen a ser una ampliació de les BD relacionals per a usar en les taules l’orientació a objectes.</span></p>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper ClozeIdevice em_iDevice" id="id88">
+<div class="iDevice emphasis1" >
+<div class="iDevice_header"><h2 class="iDeviceTitle">Activitat d'omplir buits </h2></div>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta88_104" class="block instructions iDevice_content">
+<p><span style="font-size: medium;">Llegeix el paràgraf seguit i completa les paraules que manquen.</span></p>
+</div>
+
+    <div class="activity" id="activity-88_105">
+<form name="cloze-form-88_105" action="#" onsubmit="clozeSubmit('88_105');return false" class="activity-form">
+<div id="cloze88_105">
+<script type="text/javascript">var YOUR_SCORE_IS="La seva puntuació és"</script>
+<input type="hidden" name="clozeFlag88_105.strictMarking" id="clozeFlag88_105.strictMarking" value="false"/>
+
+<input type="hidden" name="clozeFlag88_105.checkCaps" id="clozeFlag88_105.checkCaps" value="false"/>
+
+<input type="hidden" name="clozeFlag88_105.instantMarking" id="clozeFlag88_105.instantMarking" value="true"/>
+
+<input type="hidden" name="clozeVar88_105.feedbackId" id="clozeVar88_105.feedbackId" value="ta88_106"/>
+
+<p><span style="font-size: medium;">En una 
+<label for="clozeBlank88_105.0" class="sr-av">Buits (1):</label>
+<input class="autocomplete-off" type="text" value="" id="clozeBlank88_105.0" style="width:13em" onkeyup="onClozeChange(this)" />
+<span style="display:none" id="clozeAnswer88_105.0">JXUwMDNhJXUwMDAzJXUwMDEyJXUwMDE2JXUwMDQ1JXUwMDQ0JXUwMDAxJXUwMDQ1JXUwMDQ0JXUw
+MDA1JXUwMDA1JXUwMDAxJXUwMDE2
+</span>
+ (per exemple: "institut") poden haver diverses 
+<label for="clozeBlank88_105.1" class="sr-av">Buits (2):</label>
+<input class="autocomplete-off" type="text" value="" id="clozeBlank88_105.1" style="width:6em" onkeyup="onClozeChange(this)" />
+<span style="display:none" id="clozeAnswer88_105.1">JXUwMDJjJXUwMDE1JXUwMDE0JXUwMDE5JXUwMDA5JXUwMDE2
+</span>
+ (per exemple: "alumnes", "assignatures", "professors"...).</span></p>
+<p><span style="font-size: medium;">La 
+<label for="clozeBlank88_105.2" class="sr-av">Buits (3):</label>
+<input class="autocomplete-off" type="text" value="" id="clozeBlank88_105.2" style="width:5em" onkeyup="onClozeChange(this)" />
+<span style="display:none" id="clozeAnswer88_105.2">JXUwMDJjJXUwMDE1JXUwMDE0JXUwMDE5JXUwMDBk
+</span>
+  "alumnes" de l'exemple anterior té 4 
+<label for="clozeBlank88_105.3" class="sr-av">Buits (4):</label>
+<input class="autocomplete-off" type="text" value="" id="clozeBlank88_105.3" style="width:8em" onkeyup="onClozeChange(this)" />
+<span style="display:none" id="clozeAnswer88_105.3">JXUwMDM5JXUwMDE1JXUwMDA2JXUwMDFiJXUwMDBiJXUwMDE3JXUwMDAxJXUwMDA3
+</span>
+ i 3 
+<label for="clozeBlank88_105.4" class="sr-av">Buits (5):</label>
+<input class="autocomplete-off" type="text" value="" id="clozeBlank88_105.4" style="width:9em" onkeyup="onClozeChange(this)" />
+<span style="display:none" id="clozeAnswer88_105.4">JXUwMDJhJXUwMDE3JXUwMDAyJXUwMDBlJXUwMDFhJXUwMDA3JXUwMDA2JXUwMDE3JXUwMDE2
+</span>
+.</span></p>
+<div class="block iDevice_buttons">
+<p>
+<input type="button" value="Puntuació aconseguida" id="getScore88_105" onclick="showClozeScore('88_105')" />
+<input type="button" name="feedback88_105" value="Mostra realimentació" class="feedbackbutton" onclick="toggleClozeFeedback('88_105',this)" />
+
+ 
+<input type="button" name="88_105showAnswersButton" value="Mostra/Amaga les respostes" style="" id="showAnswersButton88_105" onclick="toggleClozeAnswers('88_105')" />
+
+<span class="js-hidden js-warning">Habilita el javascript</span>
+</p>
+</div>
+<div id="clozeScore88_105"></div>
+</div>
+</form>
+</div>
+    <div id="ta88_106" class="feedback js-feedback iDevice_content" style="display:none">
+<p><span style="font-size: medium;">Una taula és com una plantilla on posar informació en columnes. El títol de les columnes serien els atributs. En un principi la taula (plantilla) no tindrà registres (estarà buida) però aniran inserint-se, modificant-se o esborrant-se al llarg del temps, conforme a les necessitats.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper ListaIdevice em_iDevice" id="id91">
+<div class="iDevice emphasis1" >
+<div class="iDevice_header"><h2 class="iDeviceTitle">Activitat desplegable</h2></div>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta91_115" class="block instructions iDevice_content">
+<p><span style="font-size: medium;">Llegeix i completa</span></p>
+</div>
+
+<div class="activity" id="activity-91_116">
+<form name="cloze-form-91_116" action="#" onsubmit="showClozeScore('91_116',1);return false" class="activity-form">
+<div id="cloze91_116">
+<script type="text/javascript">var YOUR_SCORE_IS="La seva puntuació és"</script>
+<input type="hidden" name="clozeVar91_116.feedbackId" id="clozeVar91_116.feedbackId" value="ta91_117"/>
+
+<p><span style="font-size: medium;">Avantatges de les bases de dades respecte als fitxers:</span></p>
+<p><span style="font-size: medium;">- És possible assignar 
+<label for="clozeBlank91_116.0" class="sr-av">Buits (1):</label>
+<select id="clozeBlank91_116.0">
+<option selected="selected"> </option><option value="concurrència">concurrència</option><option value="permisos">permisos</option><option value="contradictòries">contradictòries</option><option value="redundant">redundant</option><option value="registres">registres</option><option value="interrelacionades">interrelacionades</option><option value="aplicacions">aplicacions</option>
+</select>
+<span style="display:none" id="clozeAnswer91_116.0">JXUwMDI4JXUwMDE1JXUwMDE3JXUwMDFmJXUwMDA0JXUwMDFhJXUwMDFjJXUwMDFj</span>
+ als usuaris sobre les dades.</span></p>
+<p><span style="font-size: medium;">- És més senzill accedir a dades 
+<label for="clozeBlank91_116.1" class="sr-av">Buits (2):</label>
+<select id="clozeBlank91_116.1">
+<option selected="selected"> </option><option value="concurrència">concurrència</option><option value="permisos">permisos</option><option value="contradictòries">contradictòries</option><option value="redundant">redundant</option><option value="registres">registres</option><option value="interrelacionades">interrelacionades</option><option value="aplicacions">aplicacions</option>
+</select>
+<span style="display:none" id="clozeAnswer91_116.1">JXUwMDMxJXUwMDA3JXUwMDFhJXUwMDExJXUwMDE3JXUwMDAwJXUwMDE3JXUwMDA5JXUwMDBkJXUwMDAyJXUwMDBhJXUwMDA2JXUwMDAxJXUwMDBmJXUwMDA1JXUwMDAxJXUwMDE2</span>
+ entre sí.</span></p>
+<p><span style="font-size: medium;">- Facilita que no hi haja informació 
+<label for="clozeBlank91_116.2" class="sr-av">Buits (3):</label>
+<select id="clozeBlank91_116.2">
+<option selected="selected"> </option><option value="concurrència">concurrència</option><option value="permisos">permisos</option><option value="contradictòries">contradictòries</option><option value="redundant">redundant</option><option value="registres">registres</option><option value="interrelacionades">interrelacionades</option><option value="aplicacions">aplicacions</option>
+</select>
+<span style="display:none" id="clozeAnswer91_116.2">JXUwMDJhJXUwMDE3JXUwMDAxJXUwMDExJXUwMDFiJXUwMDBhJXUwMDA1JXUwMDBmJXUwMDFh</span>
+.</span></p>
+<p><span style="font-size: medium;">- És més fàcil afegir, esborrar o modificar 
+<label for="clozeBlank91_116.3" class="sr-av">Buits (4):</label>
+<select id="clozeBlank91_116.3">
+<option selected="selected"> </option><option value="concurrència">concurrència</option><option value="permisos">permisos</option><option value="contradictòries">contradictòries</option><option value="redundant">redundant</option><option value="registres">registres</option><option value="interrelacionades">interrelacionades</option><option value="aplicacions">aplicacions</option>
+</select>
+<span style="display:none" id="clozeAnswer91_116.3">JXUwMDJhJXUwMDE3JXUwMDAyJXUwMDBlJXUwMDFhJXUwMDA3JXUwMDA2JXUwMDE3JXUwMDE2</span>
+ de dades.</span></p>
+<p><span style="font-size: medium;">- Ajuden a independitzar les 
+<label for="clozeBlank91_116.4" class="sr-av">Buits (5):</label>
+<select id="clozeBlank91_116.4">
+<option selected="selected"> </option><option value="concurrència">concurrència</option><option value="permisos">permisos</option><option value="contradictòries">contradictòries</option><option value="redundant">redundant</option><option value="registres">registres</option><option value="interrelacionades">interrelacionades</option><option value="aplicacions">aplicacions</option>
+</select>
+<span style="display:none" id="clozeAnswer91_116.4">JXUwMDM5JXUwMDExJXUwMDFjJXUwMDA1JXUwMDBhJXUwMDAyJXUwMDAyJXUwMDBhJXUwMDA2JXUwMDAxJXUwMDFk</span>
+ de les dades a les quals accedeixen.</span></p>
+<p><span style="font-size: medium;">- Com no hi ha informació repetida, fa que no hi haja dades 
+<label for="clozeBlank91_116.5" class="sr-av">Buits (6):</label>
+<select id="clozeBlank91_116.5">
+<option selected="selected"> </option><option value="concurrència">concurrència</option><option value="permisos">permisos</option><option value="contradictòries">contradictòries</option><option value="redundant">redundant</option><option value="registres">registres</option><option value="interrelacionades">interrelacionades</option><option value="aplicacions">aplicacions</option>
+</select>
+<span style="display:none" id="clozeAnswer91_116.5">JXUwMDNiJXUwMDBjJXUwMDAxJXUwMDFhJXUwMDA2JXUwMDEzJXUwMDA1JXUwMDBkJXUwMDBhJXUwMDE3JXUwMDg2JXUwMDgwJXUwMDFiJXUwMDBjJXUwMDE2</span>
+.</span></p>
+<p><span style="font-size: medium;">- Permet 
+<label for="clozeBlank91_116.6" class="sr-av">Buits (7):</label>
+<select id="clozeBlank91_116.6">
+<option selected="selected"> </option><option value="concurrència">concurrència</option><option value="permisos">permisos</option><option value="contradictòries">contradictòries</option><option value="redundant">redundant</option><option value="registres">registres</option><option value="interrelacionades">interrelacionades</option><option value="aplicacions">aplicacions</option>
+</select>
+<span style="display:none" id="clozeAnswer91_116.6">JXUwMDNiJXUwMDBjJXUwMDAxJXUwMDBkJXUwMDE2JXUwMDA3JXUwMDAwJXUwMDlhJXUwMDg2JXUwMDBkJXUwMDBhJXUwMDA4</span>
+ segura: que diversos usuaris alteren alhora una mateixa dada.</span></p>
+<div class="block iDevice_buttons">
+<p>
+<input class="button" type="submit" name="getScore91_116" value="Comprova"  id="getScore91_116" />
+
+<input type="button" name="feedback91_116" value="Mostra realimentació" class="feedbackbutton" onclick="toggleClozeFeedback('91_116',this)" />
+
+<input type="hidden" name="clozeOtras91_116" id="clozeOtras91_116" value=""/>
+
+<input type="hidden" name="clozeFlag91_116.strictMarking" id="clozeFlag91_116.strictMarking" value="false" />
+<input type="hidden" name="clozeFlag91_116.checkCaps" id="clozeFlag91_116.checkCaps" value="false" />
+<input type="hidden" name="clozeFlag91_116.instantMarking" id="clozeFlag91_116.instantMarking" value="false" />
+<span class="js-hidden js-warning">Habilita el javascript</span>
+</p>
+</div>
+<div class="score js-feedback" id="clozeScore91_116"></div>
+</div>
+</form>
+</div>
+<div id="ta91_117" class="feedback js-feedback iDevice_content" style="display:none">
+<p><span style="font-size: medium;">Les bases de dades solucionen els inconvenients que tenien els fitxers.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper MultichoiceIdevice em_iDevice" id="id93">
+<div class="iDevice emphasis1" >
+<div class="iDevice_header"><h2 class="iDeviceTitle">Elecció múltiple</h2></div>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div class="question">
+<form name="multi-choice-form-93_86" action="#" onsubmit="return false" class="activity-form">
+<h3 class="js-sr-av">Qüestió </h3>
+<div id="taquestion93_86" class="block question iDevice_content">
+<p>Les bases de dades més usades són:</p>
+</div>
+<div class="iDevice_answers">
+<h4 class="js-sr-av">Respostes</h4>
+<div class="iDevice_answer">
+<p class="iDevice_answer-field js-required">
+<label for="i93_89" class="sr-av"><a href="#answer-93_89">Opció 1</a></label><input type="radio" name="option93_86" id="i93_89" onclick="getFeedback(0,3,'93_86','multi')"/>
+</p>
+<div class="iDevice_answer-content" id="answer-93_89"><a name="answer-93_89"></a>
+<div id="taans93_89" class="block iDevice_content">
+<p>Les BD relacionals</p>
+</div>
+</div>
+</div>
+<div class="iDevice_answer">
+<p class="iDevice_answer-field js-required">
+<label for="i93_261" class="sr-av"><a href="#answer-93_261">Opció 2</a></label><input type="radio" name="option93_86" id="i93_261" onclick="getFeedback(1,3,'93_86','multi')"/>
+</p>
+<div class="iDevice_answer-content" id="answer-93_261"><a name="answer-93_261"></a>
+<div id="taans93_261" class="block iDevice_content">
+<p>Les BD jeràrquiques</p>
+</div>
+</div>
+</div>
+<div class="iDevice_answer">
+<p class="iDevice_answer-field js-required">
+<label for="i93_264" class="sr-av"><a href="#answer-93_264">Opció 3</a></label><input type="radio" name="option93_86" id="i93_264" onclick="getFeedback(2,3,'93_86','multi')"/>
+</p>
+<div class="iDevice_answer-content" id="answer-93_264"><a name="answer-93_264"></a>
+<div id="taans93_264" class="block iDevice_content">
+<p>Les BD en xarxa</p>
+</div>
+</div>
+</div>
+</div>
+<div class="iDevice_feedbacks js-feedback">
+<h4 class="js-sr-av">Realimentació</h4>
+<div id="sa0b93_86" class="feedback js-hidden"><a name="sa0b93_86"></a>
+<p>Opció correcta</p>
+</div>
+<div id="sa1b93_86" class="feedback js-hidden"><a name="sa1b93_86"></a>
+<p>Incorrecte</p>
+</div>
+<div id="sa2b93_86" class="feedback js-hidden"><a name="sa2b93_86"></a>
+<p>Incorrecte</p>
+</div>
+</div>
+</form>
+<div class="iDevice_solution feedback js-hidden">
+<h4>Solució</h4>
+<ol>
+<li><a href="#answer-93_89">Opció correcta</a> (<a href="#sa0b93_86">Realimentació</a>)</li>
+<li><a href="#answer-93_261">Incorrecte</a> (<a href="#sa1b93_86">Realimentació</a>)</li>
+<li><a href="#answer-93_264">Incorrecte</a> (<a href="#sa2b93_86">Realimentació</a>)</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="iDevice_wrapper TrueFalseIdevice em_iDevice" id="id95">
+<div class="iDevice emphasis1" >
+<div class="iDevice_header"><h2 class="iDeviceTitle">Qüestió Veritat/Mentida</h2></div>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta95_100" class="block iDevice_content">
+
+</div>
+<div class="question">
+<form name="true-false-form-0b95" action="#" class="activity-form">
+<h3 class="js-sr-av">Qüestió  1</h3>
+<div id="taquestion0b95" class="block iDevice_content">
+<p>Per a dissenyar una BD relacional cal seguir el model relacional, en xarxa o jeràrquic.</p>
+</div>
+<p class="iDevice_answer js-required">
+<label for="true0b95"><input type="radio" name="option0b95" id="true0b95" onclick="getFeedback(0,2,'0b95','truefalse')" /> Veritat</label> 
+<label for="false0b95"><input type="radio" name="option0b95" id="false0b95" onclick="getFeedback(1,2,'0b95','truefalse')" /> Mentida</label>
+</p>
+</form>
+<div id="s0b95" class="feedback js-feedback js-hidden">
+<h4 class="js-sr-av">Realimentació</h4>
+<p><strong id="s0b95-result" class="wrong">Mentida</strong></p>
+<p>Per a dissenyar un tipus de BD cal seguir el model de dades corresponent.</p>
+</div>
+</div>
+<div class="question">
+<form name="true-false-form-1b95" action="#" class="activity-form">
+<h3 class="js-sr-av">Qüestió  2</h3>
+<div id="taquestion1b95" class="block iDevice_content">
+<p>En el curs estudiarem les BD relacionals i les BD objecte-relacionals.</p>
+</div>
+<p class="iDevice_answer js-required">
+<label for="true1b95"><input type="radio" name="option1b95" id="true1b95" onclick="getFeedback(0,2,'1b95','truefalse')" /> Veritat</label> 
+<label for="false1b95"><input type="radio" name="option1b95" id="false1b95" onclick="getFeedback(1,2,'1b95','truefalse')" /> Mentida</label>
+</p>
+</form>
+<div id="s1b95" class="feedback js-feedback js-hidden">
+<h4 class="js-sr-av">Realimentació</h4>
+<p><strong id="s1b95-result" class="right">Veritat</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p align="center">Llicenciat sota la  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Llicència Creative Commons Reconeixement NoComercial CompartirIgual 4.0</a></p></div>
+</div>
+<div id='bottomPagination'>
+<div class="pagination noprt">
+<a href="2_fitxers.html" class="prev"><span>&laquo; </span>Anterior</a> | <a href="4_sistema_gestor_de_bases_de_dades_sgbd.html" class="next"> Següent<span> &raquo;</span></a>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="my_js.js"></script></body></html>

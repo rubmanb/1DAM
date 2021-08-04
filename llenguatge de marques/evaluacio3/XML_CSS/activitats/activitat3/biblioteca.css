@@ -1,0 +1,33 @@
+biblioteca{
+    display: table;
+    display: block;
+    background-color: rgb(205, 205, 205);
+    margin-left: 20px;
+    padding: 15px;
+}
+autor::before{
+    content: "Autor y els seus llibres:";
+    color: white;
+    font-weight: bold;
+}
+autor{
+    display: table;
+    display: inline-block;
+    padding: 3px;
+    border-spacing: 4px;
+    background-color: rgb(113, 165, 111);
+}
+llibres, editorial, titol, any, idioma, nom, collecció{
+    display: table-row;
+    border-spacing: 3px;
+    background-color: rgb(201, 186, 123);
+}
+llibre{
+    display: table-cell;
+}
+titol, subtitol{
+    font-weight: bold;
+}
+any, idioma, editorial{
+    font-style: italic;
+}

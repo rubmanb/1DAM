@@ -1,0 +1,53 @@
+alumnes {
+    font-family: Sans-Serif;
+    width: 25%;
+    background-color: rgb(245, 245, 184);
+    border: 2px dashed green;
+    margin: 20px;
+    padding: 20px;
+}
+alumnes::before{
+    content: "Donar d'alta usuaris al Moodle...";
+    color: green;
+    font-style: italic;
+    margin: 10px;
+}
+alumnes::after{
+    content: "...Curs 2018-2019";
+    color: green;
+    font-style: italic;
+    margin: 10px;
+}
+grup::before {
+    content: "Relació d'alumnes de" attr(nom);
+    color: red;
+    font-weight: bold;
+}
+
+alumne::before{
+    content: attr(nia);
+    font-weight: bold;
+}
+nom, cognoms, cp, poblacio{
+    display: none;
+}
+
+grup, alumne {
+    display: block;
+}
+
+grup {
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid navy;
+}
+
+alumne {
+    content: attr(alumne);
+    margin: 10px;
+}
+
+mail {
+    color:blue;
+}

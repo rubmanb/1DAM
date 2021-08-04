@@ -1,0 +1,80 @@
+institut{
+    display: block;
+    padding: 20px;
+    margin: 50px;
+    margin-top: 35px;
+    background: rgb(223, 224, 127);
+    border: rgb(124, 24, 133) 3px solid;
+    border-radius: 5px 5px;
+}
+
+institut::before {
+    display: block;
+    content: "IES " attr(nom) " el Just";
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: 2.5px;
+    color: rgb(200, 28, 28);
+    background: url(logo2.png)right top no-repeat, rgb(46, 46, 150);
+    width: 96%;
+    height: 100px;
+    padding-left: 40px;
+    padding-top: 20px;
+    border-radius: 3px 3px;
+    
+}
+
+especialitat {
+    display: block;
+    padding: 30px;
+    margin-left: 80px;
+}
+
+cicle {
+    display: list-item;
+    list-style-type: square;
+    font-size: 40px;
+    color: rgb(252, 151, 0);
+    padding: 10px;
+    letter-spacing: 2.5px;
+}
+
+notes {
+    display: block;
+    padding: 20px;
+    margin-left: 100px;
+}
+
+classe::before {
+    content: "NOTES "attr(nom);
+    color: rgb(0, 255, 157);
+    background-color: rgb(44, 44, 44);
+    font-size: 35px;
+    display: table;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+alumne {
+    display: table-row;
+}
+
+nom, nota {
+    display: block;
+    display: table-cell;
+    border: 1.5px black solid;
+    color: rgb(27, 141, 216);
+    background-color: rgb(39, 39, 39);
+    width: 90.5%;
+    height: 35px;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+nota {
+    background-color: rgb(84, 88, 84);
+    color: white;
+    width: 50px;
+    text-align: center;
+}
